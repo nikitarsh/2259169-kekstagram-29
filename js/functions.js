@@ -4,7 +4,6 @@ function checkStringLength (string, maxlength ) {
 }
 console.log(checkStringLength('Проверка длинны строки', 30));
 // Функция для проверки, является ли строка палиндромом.
-
 function isPalindrome(str) {
   str = str.replaceAll(' ', '').toUpperCase();
   return str === [...str].reverse().join('');
