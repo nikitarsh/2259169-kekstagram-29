@@ -19,7 +19,6 @@ const COMMENTS = [
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота.',
   'Имена авторов также должны быть случайными. Набор имён для комментаторов составьте сами. Подставляйте случайное имя в поле name.',
   'С ума сойти можно от того, как развивается этот мир, еще несколько лет назад было немыслимо представить, что такое будет абсолютно бесплатно, и так доступно.',
-  
 ];
 
 const PHOTO_DESCRIPTIONS = [
@@ -43,9 +42,9 @@ const getRandomInteger = (a, b) => {
 const getRandomUserAvatar = () => `img/avatar-${getRandomInteger(1, 6)}.svg`;
 getRandomUserAvatar();
 //Генерратор комментариев
-const getRandomComment = () => COMMENTS[getRandomInteger(0, COMMENTS.length -1)];
+const getRandomComment = () => COMMENTS[getRandomInteger(0, COMMENTS.length - 1)];
 //Генератор описания фотографий
-const getRandomPhotoDescription = () => PHOTO_DESCRIPTIONS[getRandomInteger(0, PHOTO_DESCRIPTIONS.length -1)];
+const getRandomPhotoDescription = () => PHOTO_DESCRIPTIONS[getRandomInteger(0, PHOTO_DESCRIPTIONS.length - 1)];
 //Генератор ID фотографий
 const getRandomPhotoId = () => getRandomInteger(30, 199);
 //Генератор URL фотографий
@@ -59,7 +58,7 @@ const getUserComment = () => {
     id: getRandomPhotoId(),
     avatar: getRandomUserAvatar(),
     message: getRandomComment(),
-    name: NAMES[getRandomInteger(0, NAMES.length -1)],
+    name: NAMES[getRandomInteger(0, NAMES.length - 1)],
   };
 };
 
