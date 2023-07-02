@@ -21,7 +21,7 @@ const COMMENTS = [
   'С ума сойти можно от того, как развивается этот мир, еще несколько лет назад было немыслимо представить, что такое будет абсолютно бесплатно, и так доступно.',
 ];
 
-const PHOTO_DESCRIPTIONS = [
+const DESCRIPTIONS = [
   'Улыбаюсь новому дню.',
   'Теплые воспоминания в холодное время года.',
   'Поймал дзен.',
@@ -37,43 +37,55 @@ const getRandomInteger = (a, b) => {
   const result = Math.random() * (upper - lower + 1) + lower;
   return Math.floor(result);
 };
+//Рандомный элемент массива
+const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
+//Счётчик аватарок
+const avatarCount = {
+  MIN: 1,
+  MAX: 6
+};
 
+const likesCount = {
+  MIN: 15,
+  MAX: 200
+}
+
+const commentsCount = {
+  MIN: 0,
+  MAX: 30
+}
+
+const photosCount = 25;
 //Генератор аватарки
-const getRandomUserAvatar = () => `img/avatar-${getRandomInteger(1, 6)}.svg`;
-getRandomUserAvatar();
-//Генерратор комментариев
-const getRandomComment = () => COMMENTS[getRandomInteger(0, COMMENTS.length - 1)];
-//Генератор описания фотографий
-const getRandomPhotoDescription = () => PHOTO_DESCRIPTIONS[getRandomInteger(0, PHOTO_DESCRIPTIONS.length - 1)];
+const getRandomUserAvatar = () => `img/avatar-${getRandomInteger(avatarCount.MIN, avatarCount.MAX)}.svg`;
 //Генератор ID фотографий
 const getRandomPhotoId = () => getRandomInteger(30, 199);
 //Генератор URL фотографий
 const getRandomPhotoUrl = () => `photos/${getRandomInteger(1, 25)}.jpg`;
 //Генератор лайков
-const getRandomLikes = () => getRandomInteger(15, 200);
+const getRandomLikes = () => getRandomInteger(likesCount.MIN, likesCount.MAX);
 
 //Комментарий к фото
 const getUserComment = () => {
   return {
     id: getRandomPhotoId(),
     avatar: getRandomUserAvatar(),
-    message: getRandomComment(),
-    name: NAMES[getRandomInteger(0, NAMES.length - 1)],
+    message: getRandomArrayElement(COMMENTS),
+    name: getRandomArrayElement(NAMES),
   };
 };
 
 //Карточка фотографии
-const generatePhotoPage = () => {
+const generatePhoto = () => {
   return {
     id: getRandomPhotoId(),
     url: getRandomPhotoUrl(),
-    description: getRandomPhotoDescription(),
+    description: getRandomArrayElement(DESCRIPTIONS),
     likes: getRandomLikes(),
-    comments: Array.from({length: getRandomInteger(0, 30)}, getUserComment),
+    comments: Array.from({length: getRandomInteger(commentsCount.MIN, commentsCount.MAX)}, getUserComment),
   };
 };
 
 //Массив из 25 сгенерированных объектов
-let photosUsersDescriptions = Array.from({length: 25}, generatePhotoPage);
-// eslint-disable-next-line no-console
-console.log(photosUsersDescriptions);
+const photos = Array.from({length: photosCount}, generatePhoto);
+console.log(photos);
