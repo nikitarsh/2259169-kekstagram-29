@@ -48,12 +48,12 @@ const avatarCount = {
 const likesCount = {
   MIN: 15,
   MAX: 200
-}
+};
 
 const commentsCount = {
   MIN: 0,
   MAX: 30
-}
+};
 
 const photosCount = 25;
 //Генератор аватарки
@@ -66,7 +66,7 @@ const getRandomPhotoUrl = () => `photos/${getRandomInteger(1, 25)}.jpg`;
 const getRandomLikes = () => getRandomInteger(likesCount.MIN, likesCount.MAX);
 
 //Комментарий к фото
-const getUserComment = () => {
+const getUserComment = function() {
   return {
     id: getRandomPhotoId(),
     avatar: getRandomUserAvatar(),
@@ -76,7 +76,7 @@ const getUserComment = () => {
 };
 
 //Карточка фотографии
-const generatePhoto = () => {
+const generatePhoto = function() {
   return {
     id: getRandomPhotoId(),
     url: getRandomPhotoUrl(),
@@ -88,4 +88,5 @@ const generatePhoto = () => {
 
 //Массив из 25 сгенерированных объектов
 const photos = Array.from({length: photosCount}, generatePhoto);
+// eslint-disable-next-line no-console
 console.log(photos);
