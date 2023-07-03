@@ -46,7 +46,13 @@ const CommentsCount = {
   MIN: 0,
   MAX: 30
 };
-
+//Генератор случайных чисел
+const getRandomInteger = (a, b) => {
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
 //Рандомный элемент массива
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 //Генератор аватарки
@@ -57,13 +63,6 @@ const getRandomPhotoId = () => getRandomInteger(30, 199);
 const getRandomPhotoUrl = () => `photos/${getRandomInteger(1, 25)}.jpg`;
 //Генератор лайков
 const getRandomLikes = () => getRandomInteger(LikesCount.MIN, LikesCount.MAX);
-//Генератор случайных чисел
-const getRandomInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-};
 //Комментарий к фото
 const getUserComment = () => ({
   id: getRandomPhotoId(),
