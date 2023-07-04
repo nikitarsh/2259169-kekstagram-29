@@ -71,14 +71,14 @@ const getUserComment = () => ({
   name: getRandomArrayElement(NAMES),
 });
 //Карточка фотографии
-const generatePhoto = () => ({
-  id: getRandomPhotoId(),
-  url: getRandomPhotoUrl(),
+const generatePhoto = (id) => ({
+  id: id,
+  url: `photos/${id}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomLikes(),
   comments: Array.from({length: getRandomInteger(CommentsCount.MIN, CommentsCount.MAX)}, getUserComment),
 });
 //Массив из 25 сгенерированных объектов
-const photos = Array.from({length: PHOTOS_COUNT}, generatePhoto);
+const photos = Array.from({length: PHOTOS_COUNT}, (_, i) => generatePhoto(i + 1));
 // eslint-disable-next-line no-console
 console.log(photos);
