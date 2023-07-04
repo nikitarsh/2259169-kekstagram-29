@@ -59,8 +59,6 @@ const getRandomArrayElement = (elements) => elements[getRandomInteger(0, element
 const getRandomUserAvatar = () => `img/avatar-${getRandomInteger(AvatarCount.MIN, AvatarCount.MAX)}.svg`;
 //Генератор ID фотографий
 const getRandomPhotoId = () => getRandomInteger(30, 199);
-//Генератор URL фотографий
-const getRandomPhotoUrl = () => `photos/${getRandomInteger(1, 25)}.jpg`;
 //Генератор лайков
 const getRandomLikes = () => getRandomInteger(LikesCount.MIN, LikesCount.MAX);
 //Комментарий к фото
