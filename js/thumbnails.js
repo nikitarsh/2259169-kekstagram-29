@@ -1,7 +1,7 @@
 //Находим шаблон из разметки.
 const elementTemplate = document
- .querySelector('#picture')
- .content.querySelector('.picture');
+  .querySelector('#picture')
+  .content.querySelector('.picture');
 //Создаем контейнер.
 const container = document.querySelector('.pictures');
 //Создаем одну миниатюру фотографии
@@ -14,7 +14,7 @@ const createImage = ({comments, description, likes, url, }) => {
   element.querySelector('.picture__likes').textContent = likes;
 
   return element;
-}
+};
 
 //Создаем минитюры фотографий.
 const createImages = (pictures) => {
