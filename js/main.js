@@ -1,5 +1,5 @@
 import './data.js';
-import {photos} from './data.js';
-import {createImages} from './thumbnails.js';
+import {printPhotos} from './data.js';
+import {createImages} from './create-miniature-images.js';
 
-createImages(photos());
+createImages(printPhotos());

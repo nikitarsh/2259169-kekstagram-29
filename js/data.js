@@ -71,6 +71,6 @@ const generatePhoto = (id) => ({
   comments: Array.from({length: getRandomInteger(CommentsCount.MIN, CommentsCount.MAX)}, getUserComment),
 });
 //Массив из 25 сгенерированных объектов
-const photos = () => Array.from({length: PHOTOS_COUNT}, (_, i) => generatePhoto(i + 1));
+const printPhotos = () => Array.from({length: PHOTOS_COUNT}, (_, i) => generatePhoto(i + 1));
 
-export {photos};
+export {printPhotos};
