@@ -35,4 +35,4 @@ const createImages = (pictures) => {
   container.append(fragment);
 };
 
-export {createImages};
+export { createImages };
