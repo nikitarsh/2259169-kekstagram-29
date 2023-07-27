@@ -15,7 +15,7 @@ const renderGallery = (pictures) => {
     );
     openBigImage(picture);
 
-  })
+  });
   createImages(pictures, container);
 };
 
