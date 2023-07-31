@@ -46,11 +46,12 @@ const onPictureCloseButton = () => {
   hideBigImage();
 };
 //Поиск данных для лайков, описания
-const renderImageDetails = ({url, likes, description}) => {
+const renderImageDetails = ({url, likes, description, comments}) => {
   pictureElement.querySelector('.big-picture__img img').src = url;
   pictureElement.querySelector('.big-picture__img img').alt = description;
   pictureElement.querySelector('.likes-count').textContent = likes;
   pictureElement.querySelector('.social__caption').textContent = description;
+  renderComments(comments);
 };
 //Открытие модалки
 const openBigImage = (data) => {
@@ -61,7 +62,6 @@ const openBigImage = (data) => {
   document.addEventListener('keydown', onDocumentKeydown);
 
   renderImageDetails(data);
-  renderComments(data.comments);
 };
 //отработчик для закрытия модалки по клику на крестик.
 pictureCloseButton.addEventListener('click', onPictureCloseButton);
