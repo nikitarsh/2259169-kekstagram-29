@@ -61,7 +61,7 @@ const isTextFieldFocused = () =>
   document.activeElement === document.querySelector('.text__description');
 
 const onDocumentKeydown = (evt) => {
-  const isEscapeKey = (evt) => evt.key === 'Escape' && !isTextFieldFocused();
+  const isEscapeKey = () => evt.key === 'Escape' && !isTextFieldFocused();
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeForm();
