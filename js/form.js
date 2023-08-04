@@ -1,4 +1,4 @@
-import { isEscapeKey } from "./util.js";
+import { isEscapeKey } from './util.js';
 const MAX_NUMBER_OF_HASHTAGS = 5;
 const MAX_NUMBER_OF_CHARACTERS = 140;
 const VALID_CHARACTERS = /^#[a-zа-яё0-9]{1,19}$/i;
@@ -62,11 +62,11 @@ const isTextFieldFocused = () =>
   document.activeElement === document.querySelector('.text__hashtags') ||
   document.activeElement === document.querySelector('.text__description');
 
-function onDocumentKeydown  (evt) {
+function onDocumentKeydown (evt) {
   if(isEscapeKey(evt) && !isTextFieldFocused()) {
     closeEditingModal();
   }
-};
+}
 
 function closeEditingModal() {
   pristine.reset();
@@ -85,9 +85,9 @@ const openEditingModal = () => {
 };
 
 form.addEventListener('submit', (evt) => {
-  const isValid = pristine.validate();
-    if (!isValid) {
-      evt.preventDefault();
+const isValid = pristine.validate();
+  if (!isValid) {
+    evt.preventDefault();
   }
 });
 
