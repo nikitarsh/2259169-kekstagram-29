@@ -85,7 +85,7 @@ const openEditingModal = () => {
 };
 
 form.addEventListener('submit', (evt) => {
-const isValid = pristine.validate();
+  const isValid = pristine.validate();
   if (!isValid) {
     evt.preventDefault();
   }
