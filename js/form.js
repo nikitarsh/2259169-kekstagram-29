@@ -70,6 +70,7 @@ function onDocumentKeydown (evt) {
 }
 
 function closeEditingModal() {
+  form.reset();
   pristine.reset();
   uploadOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
@@ -82,7 +83,6 @@ const onCloseButtonClick = () => {
 };
 
 const openEditingModal = () => {
-  form.reset();
   uploadOverlay.classList.remove('hidden');
   body.classList.add('modal-open');
   closeButton.addEventListener('click', onCloseButtonClick);
