@@ -1,7 +1,3 @@
-//onIncreaseButtonClick
-//onDecreaseButtonClick
-//
-
 const imageScale = {
   MIN: 25,
   MAX: 100,
