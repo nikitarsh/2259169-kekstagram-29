@@ -3,6 +3,7 @@ const MAX_NUMBER_OF_HASHTAGS = 5;
 const MAX_NUMBER_OF_CHARACTERS = 140;
 const VALID_CHARACTERS = /^#[a-zа-яё0-9]{1,19}$/i;
 
+const body = document.querySelector('body');
 const form = document.querySelector('.img-upload__form');
 const uploadOverlay = document.querySelector('.img-upload__overlay');
 const uploadInput = document.querySelector('.img-upload__input');
@@ -71,18 +72,28 @@ function onDocumentKeydown (evt) {
 function closeEditingModal() {
   pristine.reset();
   uploadOverlay.classList.add('hidden');
-  document.querySelector('body').classList.remove('modal-open');
+  body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
   uploadInput.value = '';
 }
 
+const onCloseButtonClick = () => {
+  closeEditingModal();
+};
+
 const openEditingModal = () => {
   form.reset();
   uploadOverlay.classList.remove('hidden');
-  document.querySelector('body').classList.add('modal-open');
-  closeButton.addEventListener('click', closeEditingModal);
+  body.classList.add('modal-open');
+  closeButton.addEventListener('click', onCloseButtonClick);
   document.addEventListener('keydown', onDocumentKeydown);
 };
+
+const onUploadInputChange = () => {
+  openEditingModal();
+};
+
+uploadInput.addEventListener('change', onUploadInputChange);
 
 form.addEventListener('submit', (evt) => {
   const isValid = pristine.validate();
@@ -91,4 +102,3 @@ form.addEventListener('submit', (evt) => {
   }
 });
 
-uploadInput.addEventListener('change', openEditingModal);
