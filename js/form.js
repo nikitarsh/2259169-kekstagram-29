@@ -1,5 +1,6 @@
 import { isEscapeKey } from './util.js';
 import { setScale, defaultScale } from './scale.js';
+import { resetEffects } from './filters.js';
 const MAX_NUMBER_OF_HASHTAGS = 5;
 const MAX_NUMBER_OF_CHARACTERS = 140;
 const VALID_CHARACTERS = /^#[a-zа-яё0-9]{1,19}$/i;
@@ -74,6 +75,7 @@ function closeEditingModal() {
   form.reset();
   pristine.reset();
   defaultScale();
+  resetEffects();
   uploadOverlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
