@@ -28,7 +28,7 @@ const onIncreaseButtonClick = () => {
 };
 
 const defaultScale = () => {
-  scalePhoto(imageScale.DEFAULT)
+  scalePhoto(imageScale.DEFAULT);
 };
 
 const setScale = () => {
