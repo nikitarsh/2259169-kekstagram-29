@@ -12,6 +12,30 @@ function isEscPress(evt, cb) {
   }
 }
 
+const onSuccessCloseButtonClick = () => {
+  closeSuccessMessage();
+};
+
+const onErrorCloseButtonClick = () => {
+  closeErrorMessage();
+};
+
+const onSuccessDocumentClick = (evt) => {
+  evt.preventDefault();
+
+  if (!evt.target.closest('.success__inner')) {
+    closeSuccessMessage();
+  }
+};
+
+const onErrorDocumentClick = (evt) => {
+  evt.preventDefault();
+
+  if (!evt.target.closest('.error__inner')) {
+    closeErrorMessage();
+  }
+};
+
 const onErrorDocumentKeydown = (evt) => isEscPress(evt, closeErrorMessage);
 const onSuccessDocumentKeydown = (evt) => isEscPress(evt, closeSuccessMessage);
 
@@ -23,19 +47,6 @@ const showSuccessMessage = () => {
   document.addEventListener('click', onSuccessDocumentClick);
   document.addEventListener('keydown', onSuccessDocumentKeydown);
 };
-
-const onSuccessDocumentClick = (evt) => {
-  evt.preventDefault();
-
-  if (!evt.target.closest('.success__inner')) {
-    closeSuccessMessage();
-  }
-};
-
-const onSuccessCloseButtonClick = () => {
-  closeSuccessMessage();
-};
-
 
 function closeSuccessMessage() {
   document.body.querySelector('.success').remove();
@@ -60,17 +71,5 @@ function closeErrorMessage() {
   document.removeEventListener('keydown', onErrorDocumentKeydown);
   document.addEventListener('keydown', onDocumentKeydown);
 }
-
-const onErrorDocumentClick = (evt) => {
-  evt.preventDefault();
-
-  if (!evt.target.closest('.error__inner')) {
-    closeErrorMessage();
-  }
-};
-
-const onErrorCloseButtonClick = () => {
-  closeErrorMessage();
-};
 
 export{showErrorMessage,showSuccessMessage};

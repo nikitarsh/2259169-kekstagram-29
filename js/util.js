@@ -24,7 +24,7 @@ const errorAlert = (message) => {
 
   document.body.append(messageAlert);
   setTimeout(() => {
-    alertContainer.remove();
+    errorAlert.remove();
   }, ALERT_TIMEOUT);
 };
 
