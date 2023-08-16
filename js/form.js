@@ -1,9 +1,16 @@
 import { isEscapeKey } from './util.js';
 import { initScale, resetScale} from './scale.js';
 import { resetEffects } from './filters.js';
+import { showSuccessMessage, showErrorMessage  } from './messages.js';
+import { sendData } from './api.js';
 const MAX_NUMBER_OF_HASHTAGS = 5;
 const MAX_NUMBER_OF_CHARACTERS = 140;
 const VALID_CHARACTERS = /^#[a-zа-яё0-9]{1,19}$/i;
+
+const SubmitButtonText = {
+  IDLE: 'Опубликовать',
+  SENDING: 'Публикую...'
+};
 
 const body = document.querySelector('body');
 const form = document.querySelector('.img-upload__form');
@@ -12,6 +19,7 @@ const uploadInput = document.querySelector('.img-upload__input');
 const closeButton = document.querySelector('.img-upload__cancel');
 const hashtagInput = form.querySelector('.text__hashtags');
 const textareaInput = form.querySelector('.text__description');
+const submitButton = form.querySelector('.img-upload__submit');
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
@@ -92,18 +100,44 @@ const openEditingModal = () => {
   closeButton.addEventListener('click', onCloseButtonClick);
   document.addEventListener('keydown', onDocumentKeydown);
   initScale();
+  resetEffects();
 };
 
 const onUploadInputChange = () => {
   openEditingModal();
 };
 
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = SubmitButtonText.SENDING;
+};
+
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = SubmitButtonText.IDLE;
+};
+
+const sendingData = async (data) => {
+  try {
+    await sendData(data);
+    closeEditingModal();
+    showSuccessMessage();
+  } catch {
+    showErrorMessage();
+  }
+};
+
 uploadInput.addEventListener('change', onUploadInputChange);
 
-form.addEventListener('submit', (evt) => {
+form.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
   const isValid = pristine.validate();
-  if (!isValid) {
-    evt.preventDefault();
+  if (isValid) {
+    blockSubmitButton();
+    const formData = new FormData(form);
+    await sendingData(formData);
+    unblockSubmitButton();
   }
 });
 
+export {closeEditingModal, onDocumentKeydown}
