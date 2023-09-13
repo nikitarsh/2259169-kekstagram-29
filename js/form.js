@@ -1,6 +1,6 @@
 import { isEscapeKey } from './util.js';
 import { initScale, resetScale} from './scale.js';
-import { resetEffects } from './filters.js';
+import { resetEffects } from './effects.js';
 import { showSuccessMessage, showErrorMessage } from './messages.js';
 import { sendData } from './api.js';
 const MAX_NUMBER_OF_HASHTAGS = 5;

@@ -1,4 +1,4 @@
-const FILTERS = {
+const EFFECTS = {
   none: {
     name: 'none',
     min: 1,
@@ -48,7 +48,7 @@ const FILTERS = {
   }
 };
 
-const DEFAULT_FILTER = FILTERS.none;
+const DEFAULT_EFFECT = EFFECTS.none;
 
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadPrewiew = uploadForm.querySelector('.img-upload__preview img');
@@ -57,15 +57,15 @@ const filterLevelValue = uploadForm.querySelector('.effect-level__value');
 const filterLevel = uploadForm.querySelector('.effect-level');
 const filterForm = document.querySelector('.effects');
 
-let currentFilter = DEFAULT_FILTER;
+let currentEffect = DEFAULT_EFFECT;
 
 noUiSlider.create((filterSlider), {
   range: {
-    min: DEFAULT_FILTER.min,
-    max: DEFAULT_FILTER.max,
+    min: DEFAULT_EFFECT.min,
+    max: DEFAULT_EFFECT.max,
   },
-  step: DEFAULT_FILTER.step,
-  start: DEFAULT_FILTER.max,
+  step: DEFAULT_EFFECT.step,
+  start: DEFAULT_EFFECT.max,
   connect: 'lower',
 });
 
@@ -74,14 +74,14 @@ const updateSlider = () => {
   filterLevel.classList.remove('hidden');
   filterSlider.noUiSlider.updateOptions({
     range: {
-      min: currentFilter.min,
-      max: currentFilter.max,
+      min: currentEffect.min,
+      max: currentEffect.max,
     },
-    step: currentFilter.step,
-    start: currentFilter.max,
+    step: currentEffect.step,
+    start: currentEffect.max,
   });
 
-  if (currentFilter === DEFAULT_FILTER) {
+  if (currentEffect === DEFAULT_EFFECT) {
     filterSlider.classList.add('hidden');
     filterLevel.classList.add('hidden');
   }
@@ -89,7 +89,7 @@ const updateSlider = () => {
 
 const onFiltersChange = (evt) => {
   if (evt.target.type === 'radio') {
-    currentFilter = FILTERS[evt.target.value];
+    currentEffect = EFFECTS[evt.target.value];
     updateSlider();
   }
 };
@@ -98,12 +98,12 @@ const onFiltersUpdate = () => {
   uploadPrewiew.style.filter = 'none';
   uploadPrewiew.className = '';
   filterLevelValue.value = '';
-  if (currentFilter === DEFAULT_FILTER) {
+  if (currentEffect === DEFAULT_EFFECT) {
     return;
   }
   const sliderValue = filterSlider.noUiSlider.get();
-  uploadPrewiew.style.filter = `${currentFilter.style}(${sliderValue}${currentFilter.unit})`;
-  uploadPrewiew.classList.add(`effects__preview--${currentFilter.name}`);
+  uploadPrewiew.style.filter = `${currentEffect.style}(${sliderValue}${currentEffect.unit})`;
+  uploadPrewiew.classList.add(`effects__preview--${currentEffect.name}`);
   filterLevelValue.value = sliderValue;
 };
 
@@ -111,7 +111,7 @@ filterForm.addEventListener('change', onFiltersChange);
 filterSlider.noUiSlider.on('update', onFiltersUpdate);
 
 const resetEffects = () => {
-  currentFilter = DEFAULT_FILTER;
+  currentEffect = DEFAULT_EFFECT;
   updateSlider();
 };
 

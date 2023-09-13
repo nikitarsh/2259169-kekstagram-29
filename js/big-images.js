@@ -90,4 +90,4 @@ pictureCloseButton.addEventListener('click', onPictureCloseButton);
 //отработчик для кнопки "Загрузить еще"
 socialCommentsLoader.addEventListener('click', onShowMoreComments);
 
-export { openBigImage };
+export { openBigImage, hideBigImage };

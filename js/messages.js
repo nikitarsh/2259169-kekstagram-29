@@ -72,4 +72,4 @@ function closeErrorMessage() {
   document.addEventListener('keydown', onDocumentKeydown);
 }
 
-export{showErrorMessage,showSuccessMessage};
+export{ showErrorMessage,showSuccessMessage };
