@@ -24,11 +24,19 @@ const errorAlert = (message) => {
 
   document.body.append(messageAlert);
   setTimeout(() => {
-    errorAlert.remove();
+    messageAlert.remove();
   }, ALERT_TIMEOUT);
+};
+
+const debounce = (callback, timeoutDelay = 500) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
 };
 
 
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-export { getRandomArrayElement, getRandomInteger, isEscapeKey, errorAlert };
+export { getRandomArrayElement, getRandomInteger, isEscapeKey, errorAlert, debounce };
