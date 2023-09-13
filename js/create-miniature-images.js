@@ -1,5 +1,5 @@
 const elementTemplate = document.querySelector('#picture')
-.content.querySelector('.picture');
+  .content.querySelector('.picture');
 
 const container = document.querySelector('.pictures');
 
