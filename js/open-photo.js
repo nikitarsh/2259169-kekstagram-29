@@ -1,5 +1,5 @@
-import { openBigImage } from './big-images.js';
-import { createImages } from './create-miniature-images.js';
+import { openBigImage } from './big-image.js';
+import { createImages } from './images.js';
 
 const container = document.querySelector('.pictures');
 

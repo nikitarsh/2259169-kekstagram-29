@@ -1,9 +1,7 @@
-import { createImages } from './create-miniature-images.js';
+import { createImages } from './images.js';
 import { debounce } from './util.js';
 
 const PHOTOS_COUNT = 10;
-
-const TIMEOUT = 500;
 
 const filters = document.querySelector('.img-filters');
 const filtersForm = document.querySelector('.img-filters__form');
@@ -49,7 +47,7 @@ const setOnFilterClick = (evt, pictures) => {
 const setDebouncedFilter = (pictures) => {
   filtersForm.addEventListener('click', debounce((evt) => {
     setOnFilterClick(evt, pictures);
-  }, TIMEOUT));
+  }));
 };
 
-export {showFilters, setDebouncedFilter};
+export { showFilters, setDebouncedFilter };

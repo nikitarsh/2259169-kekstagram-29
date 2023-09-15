@@ -36,4 +36,4 @@ const initScale = () => {
   biggerButton.addEventListener('click', onIncreaseButtonClick);
 };
 
-export {initScale, resetScale};
+export { initScale, resetScale };

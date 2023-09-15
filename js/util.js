@@ -1,13 +1,22 @@
+const ALERT_TIMEOUT = 5000;
+const DEBOUNCE_TIMEOUT = 500;
+
 const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
   const result = Math.random() * (upper - lower + 1) + lower;
+
   return Math.floor(result);
 };
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-const ALERT_TIMEOUT = 5000;
+function isEscPress(evt, cb) {
+  if (isEscapeKey) {
+    evt.preventDefault();
+    cb();
+  }
+}
 
 const errorAlert = (message) => {
   const messageAlert = document.createElement('div');
@@ -28,7 +37,7 @@ const errorAlert = (message) => {
   }, ALERT_TIMEOUT);
 };
 
-const debounce = (callback, timeoutDelay = 500) => {
+const debounce = (callback, timeoutDelay = DEBOUNCE_TIMEOUT) => {
   let timeoutId;
   return (...rest) => {
     clearTimeout(timeoutId);
