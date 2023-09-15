@@ -1,9 +1,3 @@
-import './form.js';
-import './scale.js';
-import './effects.js';
-import './open-photo.js';
-import './messages.js';
-
 import { createImages } from './images.js';
 import { getData } from './api.js';
 import { errorAlert } from './util.js';
