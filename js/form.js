@@ -3,6 +3,7 @@ import { initScale, resetScale} from './scale.js';
 import { resetEffects } from './effects.js';
 import { showSuccessMessage, showErrorMessage } from './messages.js';
 import { sendData } from './api.js';
+
 const MAX_NUMBER_OF_HASHTAGS = 5;
 const MAX_NUMBER_OF_CHARACTERS = 140;
 const VALID_CHARACTERS = /^#[a-zа-яё0-9]{1,19}$/i;
@@ -140,4 +141,4 @@ form.addEventListener('submit', async (evt) => {
   }
 });
 
-export {closeEditingModal, onDocumentKeydown};
+export { closeEditingModal, onDocumentKeydown };

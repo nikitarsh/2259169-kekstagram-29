@@ -12,7 +12,7 @@ const photoPreview = document.querySelector('.img-upload__preview img');
 
 const setScale = (value) => {
   scaleInput.value = `${value}%`;
-  photoPreview.style.scale = value / 100;
+  photoPreview.style.transform = `scale(${value / 100})`;
 };
 
 const onDecreaseButtonClick = () => {
@@ -36,4 +36,4 @@ const initScale = () => {
   biggerButton.addEventListener('click', onIncreaseButtonClick);
 };
 
-export {initScale, resetScale};
+export { initScale, resetScale };

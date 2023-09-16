@@ -1,16 +1,10 @@
-import {onDocumentKeydown} from './form.js';
+import { onDocumentKeydown } from './form.js';
+import { isEscapeKey } from './util.js';
 
 const successTemplate = document.querySelector('#success').content.querySelector('.success');
 const errorTemplate = document.querySelector('#error').content.querySelector('.error');
 const successModal = successTemplate.cloneNode(true);
 const errorModal = errorTemplate.cloneNode(true);
-
-function isEscPress(evt, cb) {
-  if (evt.key === 'Escape') {
-    evt.preventDefault();
-    cb();
-  }
-}
 
 const onSuccessCloseButtonClick = () => {
   closeSuccessMessage();
@@ -35,6 +29,14 @@ const onErrorDocumentClick = (evt) => {
     closeErrorMessage();
   }
 };
+
+function isEscPress(evt, cb) {
+  if (isEscapeKey) {
+    evt.preventDefault();
+    cb();
+  }
+}
+
 
 const onErrorDocumentKeydown = (evt) => isEscPress(evt, closeErrorMessage);
 const onSuccessDocumentKeydown = (evt) => isEscPress(evt, closeSuccessMessage);

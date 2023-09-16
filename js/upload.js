@@ -22,4 +22,4 @@ const setPreviewPictureListener = () => {
   });
 };
 
-export {setPreviewPictureListener};
+export { setPreviewPictureListener };
