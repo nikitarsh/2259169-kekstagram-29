@@ -1,4 +1,4 @@
-const ALERT_TIMEOUT = 5000;
+const ALERT_TIMEOUT = 500;
 const DEBOUNCE_TIMEOUT = 500;
 
 const getRandomInteger = (a, b) => {
@@ -11,12 +11,6 @@ const getRandomInteger = (a, b) => {
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-function isEscPress(evt, cb) {
-  if (isEscapeKey) {
-    evt.preventDefault();
-    cb();
-  }
-}
 
 const errorAlert = (message) => {
   const messageAlert = document.createElement('div');
@@ -41,6 +35,7 @@ const debounce = (callback, timeoutDelay = DEBOUNCE_TIMEOUT) => {
   let timeoutId;
   return (...rest) => {
     clearTimeout(timeoutId);
+
     timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
   };
 };
