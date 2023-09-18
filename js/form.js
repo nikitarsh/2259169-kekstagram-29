@@ -1,4 +1,4 @@
-import { isEscapeKey } from './util.js';
+import { isEscapeKeydown } from './util.js';
 import { initScale, resetScale} from './scale.js';
 import { resetEffects } from './effects.js';
 import { showSuccessMessage, showErrorMessage } from './messages.js';
@@ -13,14 +13,14 @@ const SubmitButtonText = {
   SENDING: 'Публикую...'
 };
 
-const body = document.querySelector('body');
+
 const form = document.querySelector('.img-upload__form');
-const uploadOverlay = document.querySelector('.img-upload__overlay');
-const uploadInput = document.querySelector('.img-upload__input');
-const closeButton = document.querySelector('.img-upload__cancel');
 const hashtagInput = form.querySelector('.text__hashtags');
 const textareaInput = form.querySelector('.text__description');
 const submitButton = form.querySelector('.img-upload__submit');
+const uploadOverlay = document.querySelector('.img-upload__overlay');
+const uploadInput = document.querySelector('.img-upload__input');
+const closeButton = document.querySelector('.img-upload__cancel');
 
 const pristine = new Pristine(form, {
   classTo: 'img-upload__field-wrapper',
@@ -75,7 +75,7 @@ const isTextFieldFocused = () =>
   document.activeElement === document.querySelector('.text__description');
 
 function onDocumentKeydown (evt) {
-  if(isEscapeKey(evt) && !isTextFieldFocused()) {
+  if(isEscapeKeydown(evt) && !isTextFieldFocused()) {
     closeEditingModal();
   }
 }
@@ -86,7 +86,7 @@ function closeEditingModal() {
   resetScale();
   resetEffects();
   uploadOverlay.classList.add('hidden');
-  body.classList.remove('modal-open');
+  document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onDocumentKeydown);
   uploadInput.value = '';
 }
@@ -97,7 +97,7 @@ const onCloseButtonClick = () => {
 
 const openEditingModal = () => {
   uploadOverlay.classList.remove('hidden');
-  body.classList.add('modal-open');
+  document.body.classList.add('modal-open');
   closeButton.addEventListener('click', onCloseButtonClick);
   document.addEventListener('keydown', onDocumentKeydown);
   initScale();

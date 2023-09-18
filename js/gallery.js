@@ -3,7 +3,7 @@ import { createImages } from './images.js';
 
 const container = document.querySelector('.pictures');
 
-const openPicture = (pictures) => {
+const initGallery = (pictures) => {
   container.addEventListener('click', (evt) => {
     const photo = evt.target.closest('[data-id]');
     if (!photo) {
@@ -17,4 +17,4 @@ const openPicture = (pictures) => {
   createImages(pictures, container);
 };
 
-export { openPicture };
+export { initGallery };

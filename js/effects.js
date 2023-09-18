@@ -51,7 +51,7 @@ const EFFECTS = {
 const DEFAULT_EFFECT = EFFECTS.none;
 
 const uploadForm = document.querySelector('.img-upload__form');
-const uploadPrewiew = uploadForm.querySelector('.img-upload__preview img');
+const uploadPreview = uploadForm.querySelector('.img-upload__preview img');
 const filterSlider = uploadForm.querySelector('.effect-level__slider');
 const filterLevelValue = uploadForm.querySelector('.effect-level__value');
 const filterLevel = uploadForm.querySelector('.effect-level');
@@ -95,15 +95,15 @@ const onFiltersChange = (evt) => {
 };
 
 const onFiltersUpdate = () => {
-  uploadPrewiew.style.filter = 'none';
-  uploadPrewiew.className = '';
+  uploadPreview.style.filter = 'none';
+  uploadPreview.className = '';
   filterLevelValue.value = '';
   if (currentEffect === DEFAULT_EFFECT) {
     return;
   }
   const sliderValue = filterSlider.noUiSlider.get();
-  uploadPrewiew.style.filter = `${currentEffect.style}(${sliderValue}${currentEffect.unit})`;
-  uploadPrewiew.classList.add(`effects__preview--${currentEffect.name}`);
+  uploadPreview.style.filter = `${currentEffect.style}(${sliderValue}${currentEffect.unit})`;
+  uploadPreview.classList.add(`effects__preview--${currentEffect.name}`);
   filterLevelValue.value = sliderValue;
 };
 

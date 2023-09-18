@@ -11,8 +11,6 @@ const filterRandom = document.querySelector('#filter-random');
 const filterDiscussed = document.querySelector('#filter-discussed');
 
 
-const showFilters = () => filters.classList.remove('img-filters--inactive');
-
 const sortRandomly = () => Math.random() - 0.5;
 
 const sortDiscussed = (photoA, photoB) => photoB.comments.length - photoA.comments.length;
@@ -44,10 +42,11 @@ const setOnFilterClick = (evt, pictures) => {
   createImages(getFilteredPhotos(pictures, filterButton));
 };
 
-const setDebouncedFilter = (pictures) => {
+const initFilters = (pictures) => {
+  filters.classList.remove('img-filters--inactive')
   filtersForm.addEventListener('click', debounce((evt) => {
     setOnFilterClick(evt, pictures);
   }));
 };
 
-export { showFilters, setDebouncedFilter };
+export { initFilters };

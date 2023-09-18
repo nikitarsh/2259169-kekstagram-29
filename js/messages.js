@@ -1,5 +1,5 @@
 import { onDocumentKeydown } from './form.js';
-import { isEscapeKey } from './util.js';
+import { isEscapeKeydown } from './util.js';
 
 const successTemplate = document.querySelector('#success').content.querySelector('.success');
 const errorTemplate = document.querySelector('#error').content.querySelector('.error');
@@ -31,7 +31,7 @@ const onErrorDocumentClick = (evt) => {
 };
 
 function isEscPress(evt, cb) {
-  if (isEscapeKey) {
+  if (isEscapeKeydown) {
     evt.preventDefault();
     cb();
   }

@@ -1,18 +1,9 @@
-const ALERT_TIMEOUT = 500;
-const DEBOUNCE_TIMEOUT = 500;
+const TIMEOUT = 500;
 
-const getRandomInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-
-  return Math.floor(result);
-};
-
-const isEscapeKey = (evt) => evt.key === 'Escape';
+const isEscapeKeydown = (evt) => evt.key === 'Escape';
 
 
-const errorAlert = (message) => {
+const showAllert = (message) => {
   const messageAlert = document.createElement('div');
   messageAlert.style.position = 'absolute';
   messageAlert.style.zIndex = '100';
@@ -28,10 +19,10 @@ const errorAlert = (message) => {
   document.body.append(messageAlert);
   setTimeout(() => {
     messageAlert.remove();
-  }, ALERT_TIMEOUT);
+  }, TIMEOUT);
 };
 
-const debounce = (callback, timeoutDelay = DEBOUNCE_TIMEOUT) => {
+const debounce = (callback, timeoutDelay = TIMEOUT) => {
   let timeoutId;
   return (...rest) => {
     clearTimeout(timeoutId);
@@ -41,6 +32,4 @@ const debounce = (callback, timeoutDelay = DEBOUNCE_TIMEOUT) => {
 };
 
 
-const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
-
-export { getRandomArrayElement, getRandomInteger, isEscapeKey, errorAlert, debounce };
+export { isEscapeKeydown , showAllert , debounce, };

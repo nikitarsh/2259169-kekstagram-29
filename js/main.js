@@ -1,10 +1,10 @@
 import { createImages } from './images.js';
 import { getData } from './api.js';
-import { errorAlert } from './util.js';
+import { showAllert } from './util.js';
 import { closeEditingModal } from './form.js';
-import { showFilters, setDebouncedFilter } from './filters.js';
+import { initFilters } from './filters.js';
 import { setPreviewPictureListener } from './upload.js';
-import { openPicture } from './open-photo.js';
+import { initGallery } from './gallery.js';
 
 setPreviewPictureListener();
 closeEditingModal();
@@ -12,9 +12,8 @@ closeEditingModal();
 try {
   const data = await getData();
   createImages(data);
-  showFilters();
-  setDebouncedFilter(data);
-  openPicture(data);
+  initFilters(data);
+  initGallery(data);
 } catch (err) {
-  errorAlert(err.message);
+  showAllert(err.message);
 }
