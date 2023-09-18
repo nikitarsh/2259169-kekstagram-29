@@ -1,4 +1,4 @@
-const elementTemplate = document.querySelector('#picture')
+const picturesTemplate = document.querySelector('#picture')
   .content.querySelector('.picture');
 
 const container = document.querySelector('.pictures');
@@ -8,7 +8,7 @@ const createImages = (pictures) => {
   const fragment = document.createDocumentFragment();
 
   pictures.forEach(({url, likes, description, comments, id}) => {
-    const picture = elementTemplate.cloneNode(true);
+    const picture = picturesTemplate.cloneNode(true);
 
     picture.querySelector('.picture__img').src = url;
     picture.querySelector('.picture__img').alt = description;

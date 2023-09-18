@@ -30,7 +30,7 @@ const getFilteredPhotos = (pictures, sortButton) => {
   }
 };
 
-const removePictures = () => document.querySelectorAll('.picture').forEach((thumbnail) => thumbnail.remove());
+const debouncedCreateImages = debounce(createImages);
 
 const setOnFilterClick = (evt, pictures) => {
   filterButtons.forEach((button) => button.classList.remove('img-filters__button--active'));
@@ -38,13 +38,12 @@ const setOnFilterClick = (evt, pictures) => {
   const filterButton = evt.target;
   filterButton.classList.add('img-filters__button--active');
 
-  removePictures();
-  createImages(getFilteredPhotos(pictures, filterButton));
+  debouncedCreateImages(getFilteredPhotos(pictures, filterButton));
 };
 
 const initFilters = (pictures) => {
-  filters.classList.remove('img-filters--inactive')
-  filtersForm.addEventListener('click', debounce((evt) => {
+  filters.classList.remove('img-filters--inactive');
+  filtersForm.addEventListener('click', ((evt) => {
     setOnFilterClick(evt, pictures);
   }));
 };
