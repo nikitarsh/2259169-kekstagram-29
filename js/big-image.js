@@ -40,9 +40,9 @@ const renderComments = () => {
     fragment.append(comment);
   }
 
-  commentsList.innerHTML = '';
+  commentsList.textContent = '';
   commentsList.append(fragment);
-  commentCount.innerHTML = `${commentsShown} из <span class="comments-count">${comments.length}</span> комментариев`;
+  commentCount.textContent = `${commentsShown} из ${comments.length} комментариев`;
 };
 const onMoreButtonClick = () => renderComments(comments);
 
