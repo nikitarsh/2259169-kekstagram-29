@@ -8,6 +8,7 @@ const commentsCount = document.querySelector('.comments-count');
 const socialComment = bigPicture.querySelector('.big-picture__social').querySelector('.social__comment');
 
 const commentCount = document.querySelector('.social__comment-count');
+const commentsCurrentCount = document.querySelector('.comments-current-count');
 const commentsLoader = bigPicture.querySelector('.comments-loader');
 const commentsList = bigPicture.querySelector('.social__comments');
 
@@ -42,7 +43,8 @@ const renderComments = () => {
 
   commentsList.textContent = '';
   commentsList.append(fragment);
-  commentCount.textContent = `${commentsShown} из ${comments.length} комментариев`;
+  commentsCurrentCount.textContent = commentsShown;
+  commentsCount.textContent = comments.length;
 };
 const onMoreButtonClick = () => renderComments(comments);
 
@@ -76,7 +78,6 @@ const openBigImage = (data) => {
   bigPicture.classList.remove('hidden');
   document.body.classList.add('modal-open');
   commentsLoader.classList.add('hidden');
-  commentsCount.classList.add('hidden');
   document.addEventListener('keydown', onDocumentKeydown);
   renderImageDetails(data);
   comments = data.comments;
